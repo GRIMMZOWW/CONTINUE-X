@@ -14,24 +14,36 @@ export default function CapsuleGenerator() {
     const [style, setStyle] = useState<StyleType>("Brief");
     const [capsule, setCapsule] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     const handleGenerate = async () => {
         if (!chatText.trim()) return;
 
         setIsLoading(true);
         setCapsule(""); // Clear previous capsule
+        setError(null);
 
-        // Simulate API delay
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        try {
+            const response = await fetch("/api/generate", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ chatText, style }),
+            });
 
-        const mockCapsule = `=== CONTINUE-X CAPSULE (${style.toUpperCase()}) ===
-GOAL: Building a chat compression web app called CONTINUE-X
-CURRENT STATE: Phase 1 UI complete with all components
-NEXT STEP: Wire Claude API for real capsule generation
-KEY DECISIONS: Next.js 14, TypeScript, Tailwind, zero data storage`;
+            const data = await response.json();
 
-        setCapsule(mockCapsule);
-        setIsLoading(false);
+            if (!response.ok) {
+                throw new Error(data.error || "Generation failed");
+            }
+
+            setCapsule(data.capsule);
+        } catch (err) {
+            setError(err instanceof Error ? err.message : "An unexpected error occurred");
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -63,11 +75,18 @@ KEY DECISIONS: Next.js 14, TypeScript, Tailwind, zero data storage`;
                         <ChatInput value={chatText} onChange={setChatText} />
                     </div>
 
-                    <GenerateButton
-                        onClick={handleGenerate}
-                        isLoading={isLoading}
-                        disabled={!chatText.trim()}
-                    />
+                    <div className="space-y-4">
+                        <GenerateButton
+                            onClick={handleGenerate}
+                            isLoading={isLoading}
+                            disabled={!chatText.trim()}
+                        />
+                        {error && (
+                            <p className="text-red-500 text-sm text-center font-medium animate-in fade-in slide-in-from-top-1">
+                                {error}
+                            </p>
+                        )}
+                    </div>
                 </section>
 
                 <CapsuleOutput capsule={capsule} />
