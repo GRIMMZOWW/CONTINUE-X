@@ -2,6 +2,23 @@ import { NextRequest, NextResponse } from "next/server";
 import { validateInput } from "@/lib/validators";
 import { generateCapsule } from "@/lib/claude";
 
+export const maxDuration = 60;
+
+function smartTruncate(text: string): string {
+    const words = text.split(/\s+/);
+
+    // If under 4000 words, use as-is
+    if (words.length <= 4000) return text;
+
+    // Take first 1000 words (context/setup)
+    const start = words.slice(0, 1000).join(' ');
+
+    // Take last 2000 words (most recent work)
+    const end = words.slice(-2000).join(' ');
+
+    return start + '\n\n[... earlier parts of conversation compressed ...]\n\n' + end;
+}
+
 export async function POST(req: NextRequest) {
     try {
         const { chatText, style } = await req.json();
@@ -21,18 +38,7 @@ export async function POST(req: NextRequest) {
         const mappedStyle = styleMap[style];
 
         // 3. Smart Truncation for Large Chats
-        const words = chatText.split(/\s+/);
-        let processedText = chatText;
-
-        if (words.length > 6000) {
-            const firstPartCount = Math.floor(words.length * 0.3);
-            const lastPartCount = Math.floor(words.length * 0.4);
-
-            const firstPart = words.slice(0, firstPartCount).join(" ");
-            const lastPart = words.slice(words.length - lastPartCount).join(" ");
-
-            processedText = `${firstPart}\n\n[... middle section compressed ...]\n\n${lastPart}`;
-        }
+        const processedText = smartTruncate(chatText);
 
         // 4. Generate Capsule
         const capsule = await generateCapsule(processedText, mappedStyle);
