@@ -3,6 +3,23 @@
 @tailwind utilities;
 
 @layer utilities {
+  .animate-pulse-green {
+    animation: pulse-green 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes pulse-green {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: .5;
+    transform: scale(1.2);
+  }
+}
+
+@layer utilities {
   .text-balance {
     text-wrap: balance;
   }

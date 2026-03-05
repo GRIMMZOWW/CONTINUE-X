@@ -16,7 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-[#0F172A] antialiased`}>
+      <body className={`${inter.className} bg-[#080C14] antialiased relative`}>
+        {/* Sublte top glow */}
+        <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none -z-10" />
         {children}
       </body>
     </html>

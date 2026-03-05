@@ -9,18 +9,47 @@ interface CapsuleOutputProps {
 export default function CapsuleOutput({ capsule }: CapsuleOutputProps) {
     if (!capsule) return null;
 
+    // Simple syntax highlighting for sections
+    const renderCapsule = (text: string) => {
+        return text.split("\n").map((line, i) => {
+            if (line.startsWith("===") && line.endsWith("===")) {
+                return <div key={i} className="text-[#818CF8] font-bold mb-2">{line}</div>;
+            }
+            if (line.match(/^[A-Z\s]+:/)) {
+                const [label, ...rest] = line.split(":");
+                return (
+                    <div key={i} className="mb-1">
+                        <span className="text-[#F59E0B] font-semibold">{label}:</span>
+                        <span className="text-[#CBD5E1] ml-2">{rest.join(":") || ""}</span>
+                    </div>
+                );
+            }
+            if (line.trim().startsWith("-")) {
+                return <div key={i} className="text-[#CBD5E1] ml-2 leading-relaxed">{line}</div>;
+            }
+            return <div key={i} className="text-[#CBD5E1] leading-relaxed">{line}</div>;
+        });
+    };
+
     return (
-        <div className="w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div className="bg-zinc-950 rounded-xl border border-zinc-800 p-6 shadow-2xl">
-                <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-4 block">
+        <div className="w-full animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-4">
+            <div className="flex items-center gap-2 px-1">
+                <div className="relative flex h-1.5 w-1.5">
+                    <span className="animate-pulse-green absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                </div>
+                <label className="text-[11px] font-bold text-[#475569] uppercase tracking-[0.2em]">
                     Generated Capsule
                 </label>
-                <div className="bg-zinc-900/50 rounded-lg p-4 mb-6 border border-zinc-800/50 max-h-[400px] overflow-y-auto custom-scrollbar">
-                    <pre className="font-mono text-sm text-zinc-300 whitespace-pre-wrap break-all leading-relaxed">
-                        {capsule}
+            </div>
+
+            <div className="bg-[#080C14] rounded-xl border border-[#1E293B] p-6 shadow-2xl overflow-hidden relative group">
+                <div className="bg-[#080C14] rounded-lg p-1 max-h-[450px] overflow-y-auto custom-scrollbar">
+                    <pre className="font-mono text-[13px] break-all whitespace-pre-wrap leading-[1.8] text-[#A5F3FC]">
+                        {renderCapsule(capsule)}
                     </pre>
                 </div>
-                <div className="flex justify-end">
+                <div className="mt-6 pt-4 border-t border-[#1E293B]/50 flex justify-end">
                     <CopyButton text={capsule} />
                 </div>
             </div>
