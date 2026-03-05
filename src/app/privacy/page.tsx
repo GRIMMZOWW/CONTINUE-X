@@ -50,7 +50,7 @@ export default function PrivacyPage() {
                     <section className="space-y-4">
                         <h2 className="text-2xl font-bold text-white">4. Third Party Services</h2>
                         <p className="text-[#64748B] leading-relaxed text-lg">
-                            CONTINUE-X uses Groq's API to power capsule generation. Your conversation text is sent to Groq's servers for processing only. Groq's privacy policy applies to this processing. We do not share your data with any other third parties.
+                            CONTINUE-X uses Groq&apos;s API to power capsule generation. Your conversation text is sent to Groq&apos;s servers for processing only. Groq&apos;s privacy policy applies to this processing. We do not share your data with any other third parties.
                         </p>
                     </section>
 

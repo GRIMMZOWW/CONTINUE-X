@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Shield, Zap, Clock, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, CheckCircle2 } from "lucide-react";
 
 export default function GuidancePage() {
     return (

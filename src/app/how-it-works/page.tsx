@@ -74,7 +74,7 @@ export default function HowItWorksPage() {
                         {
                             icon: Clock,
                             title: "Resume in Seconds",
-                            body: "Don't rebuild context manually. One capsule, paste, and your AI is fully up to speed."
+                            body: "Don&apos;t rebuild context manually. One capsule, paste, and your AI is fully up to speed."
                         }
                     ].map((feature, i) => (
                         <div key={i} className="space-y-4 group">
@@ -98,7 +98,7 @@ export default function HowItWorksPage() {
                                 Built for serious AI work
                             </h2>
                             <p className="text-[#64748B] leading-relaxed">
-                                Whether you're a solo developer, a team using AI daily, or an enterprise running complex AI workflows — CONTINUE-X keeps your work moving without losing context.
+                                Whether you&apos;re a solo developer, a team using AI daily, or an enterprise running complex AI workflows — CONTINUE-X keeps your work moving without losing context.
                             </p>
                             <ul className="space-y-3">
                                 {[

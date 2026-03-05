@@ -7,7 +7,7 @@ import StyleSelector from "./StyleSelector";
 import ChatInput from "./ChatInput";
 import GenerateButton from "./GenerateButton";
 import CapsuleOutput from "./CapsuleOutput";
-import { Shield, Zap, Clock, Check, Loader2 } from "lucide-react";
+import { } from "lucide-react";
 
 type StyleType = "Brief" | "Detailed" | "Code-Focused";
 
