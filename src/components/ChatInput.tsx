@@ -24,6 +24,12 @@ export default function ChatInput({ value, onChange }: ChatInputProps) {
                     {value.length.toLocaleString()} characters
                 </div>
             </div>
+            {value.length > 100000 && (
+                <p className="text-[12px] text-[#F59E0B] font-medium px-1 flex items-center gap-1.5 animate-in fade-in slide-in-from-top-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] animate-pulse" />
+                    Large chat detected — will auto-compress for best results
+                </p>
+            )}
         </div>
     );
 }

@@ -7,10 +7,6 @@ export function validateInput(chatText: string, style: string): { valid: boolean
         return { valid: false, error: "Chat seems too short" };
     }
 
-    if (chatText.length > 120000) {
-        return { valid: false, error: "Chat is too long, try Brief mode" };
-    }
-
     const validStyles = ["Brief", "Detailed", "Code-Focused"];
     if (!validStyles.includes(style)) {
         return { valid: false, error: "Invalid style selected" };

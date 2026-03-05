@@ -20,8 +20,22 @@ export async function POST(req: NextRequest) {
         };
         const mappedStyle = styleMap[style];
 
-        // 3. Generate Capsule
-        const capsule = await generateCapsule(chatText, mappedStyle);
+        // 3. Smart Truncation for Large Chats
+        const words = chatText.split(/\s+/);
+        let processedText = chatText;
+
+        if (words.length > 6000) {
+            const firstPartCount = Math.floor(words.length * 0.3);
+            const lastPartCount = Math.floor(words.length * 0.4);
+
+            const firstPart = words.slice(0, firstPartCount).join(" ");
+            const lastPart = words.slice(words.length - lastPartCount).join(" ");
+
+            processedText = `${firstPart}\n\n[... middle section compressed ...]\n\n${lastPart}`;
+        }
+
+        // 4. Generate Capsule
+        const capsule = await generateCapsule(processedText, mappedStyle);
 
         // 4. Return Result
         return NextResponse.json({ capsule }, { status: 200 });
