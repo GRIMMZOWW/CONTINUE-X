@@ -135,10 +135,10 @@ export default function HowItWorksPage() {
                                 </h2>
                                 <div className="space-y-4">
                                     <p className="text-[#64748B] text-lg leading-relaxed">
-                                        CONTINUE-X was born from a real problem. Long AI sessions losing context, work getting interrupted, momentum breaking. Bhaumik built this to solve his own pain — and now it solves yours too.
+                                        CONTINUE-X was born from a real problem I faced myself. Long AI sessions losing context, my work getting interrupted, momentum breaking every time I had to start a new chat. So I built this to solve my own problem — and now it solves yours too.
                                     </p>
                                     <p className="text-[#64748B] leading-relaxed">
-                                        Every line of code, every design decision, every capsule style was crafted to make AI work feel uninterrupted and focused.
+                                        Every line of code, every design decision, every capsule style was crafted by me to make AI work feel uninterrupted and focused.
                                     </p>
                                 </div>
                             </div>
