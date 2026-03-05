@@ -107,10 +107,17 @@ export default function GuidancePage() {
                     </div>
                 </section>
 
-                {/* FOOTER */}
-                <footer className="text-center">
-                    <p className="text-[#1E293B] text-[12px] uppercase tracking-widest font-bold">
-                        CONTINUE-X — Built for AI builders
+                <footer className="text-center pt-12 pb-20 border-t border-[#1E293B]/50">
+                    <p className="text-[#1E293B] text-[12px] uppercase tracking-widest font-bold mb-4">
+                        CONTINUE-X — Built by Bhaumik for AI builders who ship
+                    </p>
+                    <div className="flex justify-center gap-6 text-[12px] text-[#334155] font-medium">
+                        <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+                        <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
+                        <a href="https://github.com/GRIMMZOWW" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a>
+                    </div>
+                    <p className="text-[#1E293B] text-[10px] mt-8 uppercase tracking-[0.2em] font-medium opacity-50">
+                        © 2026 CONTINUE-X by Bhaumik. Your chats never touch our servers.
                     </p>
                 </footer>
             </div>

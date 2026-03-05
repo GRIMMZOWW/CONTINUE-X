@@ -97,7 +97,7 @@ export default function CapsuleGenerator() {
                             CONTINUE-X
                         </div>
                         <div className="text-sm text-[#64748B] font-medium">
-                            Built for AI builders who ship
+                            Built by Bhaumik for AI builders who ship
                         </div>
                         <div className="text-sm text-[#475569] font-bold uppercase tracking-widest">
                             Zero data. Pure focus.
@@ -105,11 +105,11 @@ export default function CapsuleGenerator() {
                     </div>
 
                     <div className="pt-8 border-t border-[#1E293B]/30 flex flex-col md:flex-row justify-between items-center gap-4 text-[12px] text-[#334155] font-medium">
-                        <p>© 2026 CONTINUE-X. Your chats never touch our servers.</p>
+                        <p>© 2026 CONTINUE-X by Bhaumik. Your chats never touch our servers.</p>
                         <div className="flex gap-6">
                             <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
                             <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
-                            <a href="https://github.com/GRIMMZOWW/CONTINUE-X" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a>
+                            <a href="https://github.com/GRIMMZOWW" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a>
                         </div>
                     </div>
                 </footer>
