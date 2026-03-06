@@ -21,27 +21,21 @@ function smartTruncate(text: string): string {
 
 export async function POST(req: NextRequest) {
     try {
-        const { chatText, style } = await req.json();
+        const body = await req.json();
+        const { chatText } = body;
+        const normalizedStyle = body.style?.toLowerCase()?.trim();
 
         // 1. Validate Input
-        const { valid, error } = validateInput(chatText, style);
+        const { valid, error } = validateInput(chatText, normalizedStyle);
         if (!valid) {
             return NextResponse.json({ error }, { status: 400 });
         }
 
-        // 2. Map style to lowercase as requested by Claude helper signature
-        const styleMap: Record<string, "brief" | "detailed" | "code"> = {
-            "Brief": "brief",
-            "Detailed": "detailed",
-            "Code-Focused": "code"
-        };
-        const mappedStyle = styleMap[style];
-
-        // 3. Smart Truncation for Large Chats
+        // 2. Smart Truncation for Large Chats
         const processedText = smartTruncate(chatText);
 
-        // 4. Generate Capsule
-        const capsule = await generateCapsule(processedText, mappedStyle);
+        // 3. Generate Capsule
+        const capsule = await generateCapsule(processedText, normalizedStyle as "brief" | "detailed" | "code");
 
         // 4. Return Result
         return NextResponse.json({ capsule }, { status: 200 });

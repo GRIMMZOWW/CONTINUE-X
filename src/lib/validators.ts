@@ -7,9 +7,11 @@ export function validateInput(chatText: string, style: string): { valid: boolean
         return { valid: false, error: "Chat seems too short" };
     }
 
-    const validStyles = ["Brief", "Detailed", "Code-Focused"];
-    if (!validStyles.includes(style)) {
-        return { valid: false, error: "Invalid style selected" };
+    const validStyles = ['brief', 'detailed', 'code'];
+    const normalizedStyle = style?.toLowerCase()?.trim();
+
+    if (!normalizedStyle || !validStyles.includes(normalizedStyle)) {
+        return { valid: false, error: 'Invalid style selected' };
     }
 
     return { valid: true };
