@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ArrowLeft, Shield, Zap, Clock, Check, Github, ExternalLink } from "lucide-react";
+import AdvancedSettings from "@/components/AdvancedSettings";
 
 export default function HowItWorksPage() {
     return (
@@ -269,6 +270,10 @@ export default function HowItWorksPage() {
                         © 2026 CONTINUE-X by Bhaumik. Your chats never touch our servers.
                     </p>
                 </footer>
+
+                <div className="pb-20">
+                    <AdvancedSettings />
+                </div>
             </div>
         </div>
     );

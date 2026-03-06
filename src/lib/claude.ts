@@ -1,6 +1,9 @@
 export async function generateCapsule(
     chatText: string,
-    style: 'brief' | 'detailed' | 'code'
+    style: 'brief' | 'detailed' | 'code',
+    customApiKey?: string,
+    customProvider?: string,
+    customModel?: string
 ): Promise<string> {
 
     const prompts = {
@@ -9,14 +12,23 @@ export async function generateCapsule(
         code: "You are a context compression engine for dev sessions. Compress this AI chat into a Code Capsule with these sections:\n=== CONTINUE-X CAPSULE (CODE) ===\nPROJECT:\nFILES TOUCHED:\nFUNCTIONS/COMPONENTS:\nCURRENT TASK:\nERRORS DISCUSSED:\nDECISIONS:\nNEXT ACTION:\nMax 600 words. Preserve exact file and function names. Output capsule only."
     };
 
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    const apiKey = customApiKey || process.env.GROQ_API_KEY;
+    const baseUrl = customProvider === "openai"
+        ? "https://api.openai.com/v1/chat/completions"
+        : "https://api.groq.com/openai/v1/chat/completions";
+
+    // Default model if none provided based on provider
+    const defaultModel = customProvider === "openai" ? "gpt-4o-mini" : "llama-3.3-70b-versatile";
+    const model = customModel || defaultModel;
+
+    const response = await fetch(baseUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${process.env.GROQ_API_KEY}`
+            'Authorization': `Bearer ${apiKey}`
         },
         body: JSON.stringify({
-            model: 'llama-3.3-70b-versatile',
+            model: model,
             max_tokens: 2048,
             messages: [
                 { role: 'system', content: prompts[style] },
@@ -28,6 +40,54 @@ export async function generateCapsule(
     if (!response.ok) {
         const errorBody = await response.text();
         throw new Error(`Groq API error: ${response.status} - ${errorBody}`);
+    }
+
+    const data = await response.json();
+    return data.choices[0].message.content;
+}
+
+export async function generateResumePrompt(
+    capsule: string,
+    customApiKey?: string,
+    customProvider?: string
+): Promise<string> {
+    const systemPrompt = `You are a prompt engineer. Based on this context capsule, 
+generate a single perfect prompt the user should paste at 
+the start of their new AI chat session to resume their work.
+The prompt should:
+- Reference what they were working on specifically
+- Ask the AI to read the capsule and continue
+- Be conversational and natural
+- Be under 100 words
+- Start with: 'I was working on...' or 'We were building...'
+Output only the prompt, nothing else.`;
+
+    const apiKey = customApiKey || process.env.GROQ_API_KEY;
+    const baseUrl = customProvider === "openai"
+        ? "https://api.openai.com/v1/chat/completions"
+        : "https://api.groq.com/openai/v1/chat/completions";
+
+    const model = customProvider === "openai" ? "gpt-4o-mini" : "llama-3.3-70b-versatile";
+
+    const response = await fetch(baseUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+            model: model,
+            max_tokens: 512,
+            messages: [
+                { role: 'system', content: systemPrompt },
+                { role: 'user', content: `Capsule content:\n${capsule}` }
+            ]
+        })
+    });
+
+    if (!response.ok) {
+        const errorBody = await response.text();
+        throw new Error(`Resume Prompt generation error: ${response.status} - ${errorBody}`);
     }
 
     const data = await response.json();

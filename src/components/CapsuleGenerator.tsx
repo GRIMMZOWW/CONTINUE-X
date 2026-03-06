@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import TrustBadge from "./TrustBadge";
 import StyleSelector from "./StyleSelector";
 import ChatInput from "./ChatInput";
 import GenerateButton from "./GenerateButton";
 import CapsuleOutput from "./CapsuleOutput";
-import { } from "lucide-react";
+import ResumePrompt from "./ResumePrompt";
 
 type StyleType = "Brief" | "Detailed" | "Code-Focused";
 
@@ -15,6 +15,7 @@ export default function CapsuleGenerator() {
     const [chatText, setChatText] = useState("");
     const [style, setStyle] = useState<StyleType>("Brief");
     const [capsule, setCapsule] = useState("");
+    const [resumePrompt, setResumePrompt] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -23,7 +24,13 @@ export default function CapsuleGenerator() {
 
         setIsLoading(true);
         setCapsule(""); // Clear previous capsule
+        setResumePrompt("");
         setError(null);
+
+        // Get custom settings from localStorage
+        const customApiKey = localStorage.getItem("continuex_api_key");
+        const customProvider = localStorage.getItem("continuex_provider");
+        const customModel = localStorage.getItem("continuex_model");
 
         try {
             const response = await fetch("/api/generate", {
@@ -31,7 +38,13 @@ export default function CapsuleGenerator() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ chatText, style }),
+                body: JSON.stringify({
+                    chatText,
+                    style,
+                    customApiKey,
+                    customProvider,
+                    customModel
+                }),
             });
 
             const data = await response.json();
@@ -41,12 +54,19 @@ export default function CapsuleGenerator() {
             }
 
             setCapsule(data.capsule);
+            setResumePrompt(data.resumePrompt);
         } catch (err) {
             setError(err instanceof Error ? err.message : "An unexpected error occurred");
         } finally {
             setIsLoading(false);
         }
     };
+
+    const [isUsingCustomKey, setIsUsingCustomKey] = useState(false);
+
+    useEffect(() => {
+        setIsUsingCustomKey(!!localStorage.getItem("continuex_api_key"));
+    }, []);
 
     return (
         <div className="min-h-screen bg-[#080C14] text-zinc-100 flex flex-col items-center">
@@ -75,11 +95,18 @@ export default function CapsuleGenerator() {
                     <ChatInput value={chatText} onChange={setChatText} />
 
                     <div className="space-y-4">
-                        <GenerateButton
-                            onClick={handleGenerate}
-                            isLoading={isLoading}
-                            disabled={!chatText.trim()}
-                        />
+                        <div className="flex flex-col items-center gap-2">
+                            <GenerateButton
+                                onClick={handleGenerate}
+                                isLoading={isLoading}
+                                disabled={!chatText.trim()}
+                            />
+                            {isUsingCustomKey && (
+                                <span className="text-[#F59E0B] text-[12px] font-medium animate-pulse">
+                                    Using your own API key
+                                </span>
+                            )}
+                        </div>
                         {error && (
                             <p className="text-red-400 text-[13px] text-center font-medium animate-in fade-in slide-in-from-top-1">
                                 {error}
@@ -88,7 +115,10 @@ export default function CapsuleGenerator() {
                     </div>
                 </section>
 
-                <CapsuleOutput capsule={capsule} />
+                <div className="space-y-12">
+                    <CapsuleOutput capsule={capsule} />
+                    <ResumePrompt prompt={resumePrompt} />
+                </div>
 
                 {/* ENHANCED FOOTER */}
                 <footer className="pt-20 pb-12 border-t border-[#1E293B]/50 space-y-12">

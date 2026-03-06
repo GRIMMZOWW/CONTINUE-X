@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { validateInput } from "@/lib/validators";
-import { generateCapsule } from "@/lib/claude";
+import { generateCapsule, generateResumePrompt } from "@/lib/claude";
 
 export const maxDuration = 60;
 
@@ -22,7 +22,7 @@ function smartTruncate(text: string): string {
 export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
-        const { chatText } = body;
+        const { chatText, customApiKey, customModel, customProvider } = body;
         const normalizedStyle = body.style?.toLowerCase()?.trim();
 
         // 1. Validate Input
@@ -35,10 +35,19 @@ export async function POST(req: NextRequest) {
         const processedText = smartTruncate(chatText);
 
         // 3. Generate Capsule
-        const capsule = await generateCapsule(processedText, normalizedStyle as "brief" | "detailed" | "code");
+        const capsule = await generateCapsule(
+            processedText,
+            normalizedStyle as "brief" | "detailed" | "code",
+            customApiKey,
+            customProvider,
+            customModel
+        );
 
-        // 4. Return Result
-        return NextResponse.json({ capsule }, { status: 200 });
+        // 4. Generate Smart Resume Prompt
+        const resumePrompt = await generateResumePrompt(capsule, customApiKey, customProvider);
+
+        // 5. Return Result
+        return NextResponse.json({ capsule, resumePrompt }, { status: 200 });
     } catch (error) {
         // Note: NEVER log chatText for privacy
         console.error("API Route Error:", error instanceof Error ? error.message : "Internal Server Error");

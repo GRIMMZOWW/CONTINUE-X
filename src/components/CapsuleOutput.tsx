@@ -1,6 +1,8 @@
 "use client";
 
 import CopyButton from "./CopyButton";
+import { Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface CapsuleOutputProps {
     capsule: string;
@@ -8,6 +10,18 @@ interface CapsuleOutputProps {
 
 export default function CapsuleOutput({ capsule }: CapsuleOutputProps) {
     if (!capsule) return null;
+
+    const handleDownload = () => {
+        const blob = new Blob([capsule], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `continuex-capsule-${new Date().getTime()}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    };
 
     // Simple syntax highlighting for sections
     const renderCapsule = (text: string) => {
@@ -49,7 +63,15 @@ export default function CapsuleOutput({ capsule }: CapsuleOutputProps) {
                         {renderCapsule(capsule)}
                     </pre>
                 </div>
-                <div className="mt-6 pt-4 border-t border-[#1E293B]/50 flex justify-end">
+                <div className="mt-6 pt-4 border-t border-[#1E293B]/50 flex justify-end gap-3">
+                    <Button
+                        variant="outline"
+                        onClick={handleDownload}
+                        className="min-w-[120px] h-9 text-[13px] rounded-lg transition-all duration-300 bg-transparent border-[#1E293B] text-[#64748B] hover:border-[#6366F1] hover:text-white"
+                    >
+                        <Download className="mr-2 h-3.5 w-3.5" />
+                        Download Capsule
+                    </Button>
                     <CopyButton text={capsule} />
                 </div>
             </div>
