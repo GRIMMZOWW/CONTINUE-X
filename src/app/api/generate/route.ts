@@ -22,13 +22,21 @@ function smartTruncate(text: string): string {
 export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
-        const { chatText, customApiKey, customModel, customProvider } = body;
+        const { chatText, customApiKey, customModel, customProvider, isResumePrompt } = body;
         const normalizedStyle = body.style?.toLowerCase()?.trim();
 
         // 1. Validate Input
         const { valid, error } = validateInput(chatText, normalizedStyle);
         if (!valid) {
             return NextResponse.json({ error }, { status: 400 });
+        }
+
+        // Return early with resume prompt if requested
+        if (isResumePrompt) {
+            const truncatedText = smartTruncate(chatText);
+            const resumePrompt = await generateResumePrompt(truncatedText, customApiKey, customProvider);
+            // It expects { resumePrompt } in the response
+            return NextResponse.json({ resumePrompt }, { status: 200 });
         }
 
         // 2. Smart Truncation for Large Chats

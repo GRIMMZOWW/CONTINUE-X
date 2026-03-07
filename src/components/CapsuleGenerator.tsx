@@ -8,6 +8,7 @@ import ChatInput from "./ChatInput";
 import GenerateButton from "./GenerateButton";
 import CapsuleOutput from "./CapsuleOutput";
 import ResumePrompt from "./ResumePrompt";
+import { Button } from "@/components/ui/button";
 
 type StyleType = "Brief" | "Detailed" | "Code-Focused";
 
@@ -118,6 +119,23 @@ export default function CapsuleGenerator() {
                 <div className="space-y-12">
                     <CapsuleOutput capsule={capsule} />
                     <ResumePrompt prompt={resumePrompt} />
+
+                    {(capsule || resumePrompt) && (
+                        <div className="pt-8">
+                            <Button
+                                variant="outline"
+                                onClick={() => {
+                                    setChatText("");
+                                    setCapsule("");
+                                    setResumePrompt("");
+                                    window.scrollTo({ top: 0, behavior: "smooth" });
+                                }}
+                                className="w-full h-[52px] text-[15px] font-semibold bg-transparent border-2 border-[#1E293B] text-[#64748B] hover:border-[#6366F1] hover:text-white transition-all duration-300 rounded-xl uppercase tracking-wider"
+                            >
+                                Start New Capsule
+                            </Button>
+                        </div>
+                    )}
                 </div>
 
                 {/* ENHANCED FOOTER */}
