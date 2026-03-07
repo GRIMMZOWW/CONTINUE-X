@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Settings, ExternalLink, Shield, Save, RotateCcw, Check } from "lucide-react";
+import { Settings, ExternalLink, Save, RotateCcw, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function AdvancedSettings() {
