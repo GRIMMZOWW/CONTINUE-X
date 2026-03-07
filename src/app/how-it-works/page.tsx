@@ -6,8 +6,8 @@ import AdvancedSettings from "@/components/AdvancedSettings";
 
 export default function HowItWorksPage() {
     return (
-        <div className="min-h-screen bg-[#080C14] text-zinc-100 flex flex-col items-center py-20 px-6 font-sans">
-            <div className="w-full max-w-[800px] space-y-24 md:space-y-32">
+        <div className="min-h-screen bg-[#080C14] text-zinc-100 flex flex-col items-center py-12 md:py-20 px-4 md:px-6 font-sans">
+            <div className="w-full max-w-[800px] space-y-16 md:space-y-32">
                 <header className="space-y-8">
                     <Link
                         href="/"
@@ -17,10 +17,10 @@ export default function HowItWorksPage() {
                         Back to App
                     </Link>
                     <div className="space-y-3 text-center">
-                        <h1 className="text-4xl md:text-5xl font-black tracking-tight text-white leading-tight">
+                        <h1 className="text-3xl md:text-5xl font-black tracking-tight text-white leading-tight">
                             How It Works
                         </h1>
-                        <p className="text-[#64748B] text-xl">
+                        <p className="text-[#64748B] text-lg md:text-xl">
                             Master the art of AI context compression
                         </p>
                     </div>
@@ -48,19 +48,19 @@ export default function HowItWorksPage() {
                 {/* OBJECTION HANDLER: WHY NOT JUST COPY-PASTE? */}
                 <section className="space-y-12">
                     <div className="text-center space-y-3">
-                        <h2 className="text-3xl md:text-4xl font-bold text-white">Why Not Just Copy-Paste Your Chat?</h2>
-                        <p className="text-[#64748B] text-lg">We get this question a lot. Here&apos;s the truth.</p>
+                        <h2 className="text-2xl md:text-4xl font-bold text-white px-2">Why Not Just Copy-Paste Your Chat?</h2>
+                        <p className="text-[#64748B] text-base md:text-lg px-4">We get this question a lot. Here&apos;s the truth.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* RAW COPY-PASTE */}
                         <div className="bg-[#1a0a0a] border border-[#3f1010] rounded-2xl overflow-hidden">
-                            <div className="bg-[#3f1010]/20 p-6 border-b border-[#3f1010]">
-                                <h3 className="text-xl font-bold text-red-500 flex items-center gap-2">
+                            <div className="bg-[#3f1010]/20 p-5 md:p-6 border-b border-[#3f1010]">
+                                <h3 className="text-lg md:text-xl font-bold text-red-500 flex items-center gap-2">
                                     ❌ Raw Copy-Paste
                                 </h3>
                             </div>
-                            <ul className="p-8 space-y-4">
+                            <ul className="p-6 md:p-8 space-y-4">
                                 {[
                                     "Dumps thousands of lines into new chat",
                                     "AI gets confused by conversation format",
@@ -79,12 +79,12 @@ export default function HowItWorksPage() {
 
                         {/* CONTINUE-X CAPSULE */}
                         <div className="bg-[#0a1a0f] border border-[#103f1f] rounded-2xl overflow-hidden">
-                            <div className="bg-[#103f1f]/20 p-6 border-b border-[#103f1f]">
-                                <h3 className="text-xl font-bold text-emerald-500 flex items-center gap-2">
+                            <div className="bg-[#103f1f]/20 p-5 md:p-6 border-b border-[#103f1f]">
+                                <h3 className="text-lg md:text-xl font-bold text-emerald-500 flex items-center gap-2">
                                     ✅ CONTINUE-X Capsule
                                 </h3>
                             </div>
-                            <ul className="p-8 space-y-4">
+                            <ul className="p-6 md:p-8 space-y-4">
                                 {[
                                     "Sends only what matters — goal, state, next step",
                                     "AI reads it instantly and understands everything",
@@ -102,7 +102,7 @@ export default function HowItWorksPage() {
                         </div>
                     </div>
 
-                    <p className="text-[#64748B] text-center italic max-w-[600px] mx-auto leading-relaxed">
+                    <p className="text-[#64748B] text-center italic max-w-[600px] mx-auto leading-relaxed text-sm md:text-base px-4">
                         &quot;A raw chat paste is noise. A Capsule is signal. The difference is whether your AI picks up exactly where you left off — or has to figure it out.&quot;
                     </p>
                 </section>
@@ -122,38 +122,38 @@ export default function HowItWorksPage() {
                 </section>
 
                 {/* BUILT BY BHAUMIK SECTION */}
-                <section className="bg-[#0D1117] border border-[#1E293B] rounded-[24px] p-8 md:p-12 relative overflow-hidden group">
+                <section className="bg-[#0D1117] border border-[#1E293B] rounded-[24px] p-6 md:p-12 relative overflow-hidden group">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 blur-[100px] rounded-full -mr-20 -mt-20" />
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center relative z-10">
-                        <div className="space-y-8">
-                            <div className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center relative z-10">
+                        <div className="space-y-6 md:space-y-8">
+                            <div className="space-y-4 md:space-y-6">
                                 <span className="inline-flex items-center px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-[10px] font-bold text-indigo-400 uppercase tracking-widest">
                                     The Builder
                                 </span>
-                                <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">
+                                <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">
                                     Built by Bhaumik
                                 </h2>
                                 <div className="space-y-4">
-                                    <p className="text-[#64748B] text-lg leading-relaxed">
+                                    <p className="text-[#64748B] text-base md:text-lg leading-relaxed">
                                         CONTINUE-X was born from a real problem I faced myself. Long AI sessions losing context, my work getting interrupted, momentum breaking every time I had to start a new chat. So I built this to solve my own problem — and now it solves yours too.
                                     </p>
-                                    <p className="text-[#64748B] leading-relaxed">
+                                    <p className="text-[#64748B] text-sm md:text-base leading-relaxed">
                                         Every line of code, every design decision, every capsule style was crafted by me to make AI work feel uninterrupted and focused.
                                     </p>
                                 </div>
                             </div>
 
-                            <div className="flex gap-3">
+                            <div className="flex flex-wrap gap-2 md:gap-3">
                                 {["Vibecoder", "AI Builder"].map((tag) => (
-                                    <span key={tag} className="px-4 py-1.5 bg-indigo-500/10 border border-indigo-500/20 rounded-full text-[11px] font-bold text-indigo-400 uppercase tracking-widest">
+                                    <span key={tag} className="px-3 md:px-4 py-1.5 bg-indigo-500/10 border border-indigo-500/20 rounded-full text-[9px] md:text-[11px] font-bold text-indigo-400 uppercase tracking-widest">
                                         {tag}
                                     </span>
                                 ))}
                             </div>
                         </div>
 
-                        <div className="bg-[#080C14] border border-[#1E293B] rounded-[32px] p-12 text-center space-y-8 group-hover:border-[#6366F1]/30 transition-colors shadow-2xl">
+                        <div className="bg-[#080C14] border border-[#1E293B] rounded-[24px] md:rounded-[32px] p-8 md:p-12 text-center space-y-6 md:space-y-8 group-hover:border-[#6366F1]/30 transition-colors shadow-2xl">
                             <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-indigo-500/20 to-transparent border border-indigo-500/30 text-5xl font-black text-white relative">
                                 B
                                 <div className="absolute inset-0 rounded-full border border-indigo-500/50 animate-pulse" />
@@ -216,14 +216,14 @@ export default function HowItWorksPage() {
                 {/* FOR TEAMS SECTION */}
                 <section className="bg-[#0D1117] border border-[#1E293B] rounded-[24px] overflow-hidden">
                     <div className="grid grid-cols-1 md:grid-cols-2">
-                        <div className="p-8 md:p-12 space-y-6">
+                        <div className="p-6 md:p-12 space-y-6">
                             <span className="text-[11px] font-bold text-[#6366F1] uppercase tracking-wider">
                                 For Teams
                             </span>
-                            <h2 className="text-3xl font-bold text-white leading-tight">
+                            <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight">
                                 Built for serious AI work
                             </h2>
-                            <p className="text-[#64748B] leading-relaxed">
+                            <p className="text-[#64748B] leading-relaxed text-sm md:text-base">
                                 Whether you&apos;re a solo developer, a team using AI daily, or an enterprise running complex AI workflows — CONTINUE-X keeps your work moving without losing context.
                             </p>
                             <ul className="space-y-3">
@@ -231,24 +231,24 @@ export default function HowItWorksPage() {
                                     "No account needed — works instantly",
                                     "Share capsules with teammates to hand off AI work"
                                 ].map((item, i) => (
-                                    <li key={i} className="flex items-center gap-3 text-sm text-[#CBD5E1]">
-                                        <div className="bg-emerald-500/10 p-1 rounded-full">
-                                            <Check className="w-3.5 h-3.5 text-emerald-500" />
+                                    <li key={i} className="flex items-center gap-3 text-xs md:text-sm text-[#CBD5E1]">
+                                        <div className="bg-emerald-500/10 p-1 rounded-full shrink-0">
+                                            <Check className="w-3 md:w-3.5 h-3 md:h-3.5 text-emerald-500" />
                                         </div>
                                         {item}
                                     </li>
                                 ))}
                             </ul>
                         </div>
-                        <div className="bg-[#080C14]/50 p-8 md:p-12 border-l border-[#1E293B] grid grid-cols-1 gap-8 content-center">
+                        <div className="bg-[#080C14]/50 p-6 md:p-12 border-t md:border-t-0 md:border-l border-[#1E293B] grid grid-cols-1 gap-6 md:gap-8 content-center">
                             {[
                                 { val: "31,000+", label: "characters compressed per session" },
                                 { val: "3", label: "capsule styles for every workflow" },
                                 { val: "0", label: "bytes of your data stored" }
                             ].map((stat, i) => (
                                 <div key={i} className="space-y-1">
-                                    <div className="text-3xl font-black text-white">{stat.val}</div>
-                                    <div className="text-[11px] font-bold text-[#475569] uppercase tracking-wider">
+                                    <div className="text-2xl md:text-3xl font-black text-white">{stat.val}</div>
+                                    <div className="text-[10px] md:text-[11px] font-bold text-[#475569] uppercase tracking-wider">
                                         {stat.label}
                                     </div>
                                 </div>

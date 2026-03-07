@@ -32,7 +32,7 @@ export default function Navbar() {
                 ? "bg-[#080C14]/80 backdrop-blur-md border-[#1E293B]"
                 : "bg-transparent border-transparent"
         )}>
-            <div className="max-w-[1200px] mx-auto h-full px-8 flex items-center justify-between">
+            <div className="max-w-[1200px] mx-auto h-full px-4 md:px-8 flex items-center justify-between">
                 {/* LOGO */}
                 <Link
                     href="/"
@@ -78,8 +78,8 @@ export default function Navbar() {
 
             {/* MOBILE MENU */}
             <div className={cn(
-                "fixed inset-0 top-16 bg-[#080C14] z-[90] md:hidden transition-transform duration-300 flex flex-col p-8 gap-6 border-t border-[#1E293B]",
-                isOpen ? "translate-x-0" : "translate-x-full"
+                "fixed inset-0 bg-[#080C14] z-[90] md:hidden transition-all duration-300 flex flex-col items-center justify-center p-8 gap-8",
+                isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
             )}>
                 {navLinks.map((link) => (
                     <Link

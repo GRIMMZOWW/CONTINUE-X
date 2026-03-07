@@ -46,8 +46,8 @@ export default function FAQPage() {
     ];
 
     return (
-        <div className="min-h-screen bg-[#080C14] text-zinc-100 flex flex-col items-center py-20 px-6">
-            <div className="w-full max-w-[760px] space-y-12">
+        <div className="min-h-screen bg-[#080C14] text-zinc-100 flex flex-col items-center py-12 md:py-20 px-4 md:px-6">
+            <div className="w-full max-w-[760px] space-y-10 md:space-y-12">
                 <header className="space-y-6">
                     <Link
                         href="/"
@@ -56,11 +56,11 @@ export default function FAQPage() {
                         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                         Back to App
                     </Link>
-                    <div className="space-y-2">
-                        <h1 className="text-4xl md:text-5xl font-black tracking-tight text-white">
+                    <div className="space-y-2 text-center md:text-left">
+                        <h1 className="text-3xl md:text-5xl font-black tracking-tight text-white leading-tight">
                             Frequently Asked Questions
                         </h1>
-                        <p className="text-[#64748B] text-lg">
+                        <p className="text-[#64748B] text-base md:text-lg">
                             Everything you need to know about CONTINUE-X
                         </p>
                     </div>
@@ -72,12 +72,12 @@ export default function FAQPage() {
                             <AccordionItem
                                 key={i}
                                 value={`item-${i}`}
-                                className="border-b border-[#1E293B] last:border-0 px-8"
+                                className="border-b border-[#1E293B] last:border-0 px-5 md:px-8"
                             >
-                                <AccordionTrigger className="text-left text-white py-6 hover:no-underline font-bold text-lg">
+                                <AccordionTrigger className="text-left text-white py-5 md:py-6 hover:no-underline font-bold text-base md:text-lg">
                                     {faq.q}
                                 </AccordionTrigger>
-                                <AccordionContent className="text-[#64748B] text-base leading-relaxed pb-8">
+                                <AccordionContent className="text-[#64748B] text-sm md:text-base leading-relaxed pb-6 md:pb-8">
                                     {faq.a}
                                 </AccordionContent>
                             </AccordionItem>

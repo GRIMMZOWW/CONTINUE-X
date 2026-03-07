@@ -5,8 +5,8 @@ import { ArrowLeft } from "lucide-react";
 
 export default function PrivacyPage() {
     return (
-        <div className="min-h-screen bg-[#080C14] text-zinc-100 flex flex-col items-center py-20 px-6">
-            <div className="w-full max-w-[760px] space-y-12">
+        <div className="min-h-screen bg-[#080C14] text-zinc-100 flex flex-col items-center py-12 md:py-20 px-4 md:px-6">
+            <div className="w-full max-w-[760px] space-y-10 md:space-y-12">
                 <header className="space-y-6">
                     <Link
                         href="/"
@@ -15,11 +15,11 @@ export default function PrivacyPage() {
                         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                         Back to App
                     </Link>
-                    <div className="space-y-2">
-                        <h1 className="text-4xl md:text-5xl font-black tracking-tight text-white">
+                    <div className="space-y-2 text-center md:text-left">
+                        <h1 className="text-3xl md:text-5xl font-black tracking-tight text-white leading-tight">
                             Privacy Policy
                         </h1>
-                        <p className="text-[#64748B] text-lg">
+                        <p className="text-[#64748B] text-base md:text-lg">
                             Last updated: January 2026
                         </p>
                     </div>
@@ -27,36 +27,36 @@ export default function PrivacyPage() {
 
                 <main className="space-y-12">
                     <section className="space-y-4">
-                        <h2 className="text-2xl font-bold text-white">1. Our Core Promise</h2>
-                        <p className="text-[#64748B] leading-relaxed text-lg">
+                        <h2 className="text-xl md:text-2xl font-bold text-white">1. Our Core Promise</h2>
+                        <p className="text-[#64748B] leading-relaxed text-base md:text-xl">
                             CONTINUE-X is built on one principle: your conversations are yours. We do not store, log, sell, or process your chat data in any way beyond generating your Capsule.
                         </p>
                     </section>
 
                     <section className="space-y-4">
-                        <h2 className="text-2xl font-bold text-white">2. What We Collect</h2>
-                        <p className="text-[#64748B] leading-relaxed text-lg">
+                        <h2 className="text-xl md:text-2xl font-bold text-white">2. What We Collect</h2>
+                        <p className="text-[#64748B] leading-relaxed text-base md:text-xl">
                             We collect nothing. No account information, no chat content, no IP addresses tied to your conversations, no cookies, no analytics tied to your identity.
                         </p>
                     </section>
 
                     <section className="space-y-4">
-                        <h2 className="text-2xl font-bold text-white">3. How Your Data Is Processed</h2>
-                        <p className="text-[#64748B] leading-relaxed text-lg">
+                        <h2 className="text-xl md:text-2xl font-bold text-white">3. How Your Data Is Processed</h2>
+                        <p className="text-[#64748B] leading-relaxed text-base md:text-xl">
                             When you paste a conversation and click Generate, your text is sent to our AI engine, processed in memory to create your Capsule, and immediately discarded. Nothing is written to any database or log file.
                         </p>
                     </section>
 
                     <section className="space-y-4">
-                        <h2 className="text-2xl font-bold text-white">4. Third Party Services</h2>
-                        <p className="text-[#64748B] leading-relaxed text-lg">
+                        <h2 className="text-xl md:text-2xl font-bold text-white">4. Third Party Services</h2>
+                        <p className="text-[#64748B] leading-relaxed text-base md:text-xl">
                             CONTINUE-X uses Groq&apos;s API to power capsule generation. Your conversation text is sent to Groq&apos;s servers for processing only. Groq&apos;s privacy policy applies to this processing. We do not share your data with any other third parties.
                         </p>
                     </section>
 
                     <section className="space-y-4">
-                        <h2 className="text-2xl font-bold text-white">5. Contact</h2>
-                        <p className="text-[#64748B] leading-relaxed text-lg">
+                        <h2 className="text-xl md:text-2xl font-bold text-white">5. Contact</h2>
+                        <p className="text-[#64748B] leading-relaxed text-base md:text-xl">
                             If you have any questions about this privacy policy, you can reach us at: <a href="mailto:privacy@continue-x.app" className="text-[#6366F1] hover:underline">privacy@continue-x.app</a>
                         </p>
                     </section>

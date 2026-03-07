@@ -73,24 +73,24 @@ export default function CapsuleGenerator() {
         <div className="min-h-screen bg-[#080C14] text-zinc-100 flex flex-col items-center">
             <TrustBadge />
 
-            <main className="w-full max-w-[760px] px-6 mt-16 md:mt-24 space-y-20 md:space-y-32 animate-in fade-in duration-1000">
+            <main className="w-full max-w-[760px] px-4 md:px-6 mt-12 md:mt-24 space-y-16 md:space-y-32 animate-in fade-in duration-1000">
                 {/* HERO SECTION */}
-                <header className="text-center space-y-6">
-                    <div className="inline-flex items-center gap-2 bg-[#1a1033] border border-[#6366F1] px-4 py-1.5 rounded-full mb-2">
-                        <span className="text-[11px] font-bold text-[#6366F1] uppercase tracking-wider">
+                <header className="text-center space-y-4 md:space-y-6">
+                    <div className="inline-flex items-center gap-2 bg-[#1a1033] border border-[#6366F1] px-3 md:px-4 py-1.5 rounded-full mb-2">
+                        <span className="text-[10px] md:text-[11px] font-bold text-[#6366F1] uppercase tracking-wider">
                             ⚡ AI Context Engine
                         </span>
                     </div>
-                    <h1 className="text-5xl md:text-6xl font-black tracking-[0.15em] text-white">
+                    <h1 className="text-4xl md:text-6xl font-black tracking-[0.1em] md:tracking-[0.15em] text-white">
                         CONTINUE-X
                     </h1>
-                    <p className="text-[#64748B] text-[16px]">
+                    <p className="text-[#64748B] text-[14px] md:text-[16px] px-4">
                         When your AI chat slows down — compress it.
                     </p>
                 </header>
 
                 {/* MAIN TOOL CARD */}
-                <section id="app" className="bg-[#0D1117] p-8 rounded-[24px] border border-[#1E293B] shadow-[0_0_60px_rgba(99,102,241,0.06)] space-y-8 relative">
+                <section id="app" className="bg-[#0D1117] p-4 md:p-8 rounded-[20px] md:rounded-[24px] border border-[#1E293B] shadow-[0_0_60px_rgba(99,102,241,0.06)] space-y-6 md:space-y-8 relative">
                     <div className="absolute -top-4 -left-4 w-24 h-24 bg-indigo-500/10 blur-3xl rounded-full -z-10" />
                     <StyleSelector selected={style} onSelect={setStyle} />
                     <ChatInput value={chatText} onChange={setChatText} />
