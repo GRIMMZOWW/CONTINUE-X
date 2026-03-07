@@ -51,15 +51,11 @@ export async function generateResumePrompt(
     customApiKey?: string,
     customProvider?: string
 ): Promise<string> {
-    const systemPrompt = `You are a prompt engineer. Based on this context capsule, 
-generate a single perfect prompt the user should paste at 
-the start of their new AI chat session to resume their work.
-The prompt should:
-- Reference what they were working on specifically
-- Ask the AI to read the capsule and continue
-- Be conversational and natural
-- Be under 100 words
-- Start with: 'I was working on...' or 'We were building...'
+    const systemPrompt = `You are a prompt engineer. Based on this context capsule,
+generate a single short ready-to-use prompt the user should
+paste at the start of their new AI chat to resume work.
+Keep it under 2 sentences. Start with what they were working
+on. End with asking the AI to read the capsule and continue.
 Output only the prompt, nothing else.`;
 
     const apiKey = customApiKey || process.env.GROQ_API_KEY;
