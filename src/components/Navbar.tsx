@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -36,9 +37,10 @@ export default function Navbar() {
                 {/* LOGO */}
                 <Link
                     href="/"
-                    className="text-xl font-black tracking-widest text-white hover:opacity-80 transition-opacity"
+                    className="flex items-center gap-3 text-xl font-black tracking-widest text-white hover:opacity-80 transition-opacity"
                 >
-                    CONTINUE-X
+                    <Image src="/logo.svg" width={40} height={40} alt="CONTINUE-X" />
+                    <span>CONTINUE-X</span>
                 </Link>
 
                 {/* DESKTOP NAV */}

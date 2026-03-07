@@ -1,0 +1,35 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="iconBg" x1="0" y1="0" x2="160" y2="160" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1a1744"/>
+      <stop offset="100%" stop-color="#080C14"/>
+    </linearGradient>
+    <linearGradient id="goldIcon" x1="0" y1="0" x2="160" y2="160" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F5E6A3"/>
+      <stop offset="50%" stop-color="#D4AF6A"/>
+      <stop offset="100%" stop-color="#F5E6A3"/>
+    </linearGradient>
+    <linearGradient id="indigoIcon" x1="0" y1="0" x2="160" y2="160" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#6366F1"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- Rounded square background -->
+  <rect width="160" height="160" rx="36" fill="url(#iconBg)"/>
+  <!-- Shield -->
+  <path d="M80 14 L138 36 L138 88 C138 124 80 146 80 146 C80 146 22 124 22 88 L22 36 Z" fill="#0D0F1A"/>
+  <path d="M80 14 L138 36 L138 88 C138 124 80 146 80 146 C80 146 22 124 22 88 L22 36 Z" fill="none" stroke="url(#goldIcon)" stroke-width="2" filter="url(#glow)"/>
+  <path d="M80 26 L126 44 L126 88 C126 116 80 134 80 134 C80 134 34 116 34 88 L34 44 Z" fill="none" stroke="url(#goldIcon)" stroke-width="0.8" opacity="0.3"/>
+  <!-- Divider -->
+  <line x1="28" y1="90" x2="68" y2="90" stroke="url(#goldIcon)" stroke-width="1" opacity="0.6"/>
+  <line x1="92" y1="90" x2="132" y2="90" stroke="url(#goldIcon)" stroke-width="1" opacity="0.6"/>
+  <polygon points="80,85 84,90 80,95 76,90" fill="url(#goldIcon)" opacity="0.85"/>
+  <!-- C -->
+  <text x="80" y="62" font-family="Playfair Display, serif" font-size="48" font-weight="900" fill="url(#goldIcon)" text-anchor="middle" dominant-baseline="middle" filter="url(#glow)">C</text>
+  <!-- X -->
+  <text x="80" y="120" font-family="Playfair Display, serif" font-size="36" font-weight="900" fill="url(#indigoIcon)" text-anchor="middle" dominant-baseline="middle" filter="url(#glow)">X</text>
+</svg>
