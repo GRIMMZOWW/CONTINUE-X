@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "CONTINUE-X — Resume any AI chat instantly",
   description: "Compress long AI conversations into a Capsule. Paste into a new chat and resume exactly where you left off.",
   icons: {
-    icon: "/logo.png",
+    icon: "/icon.png",
   },
 };
 
