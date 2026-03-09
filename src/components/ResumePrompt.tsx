@@ -19,8 +19,8 @@ export default function ResumePrompt({ prompt }: ResumePromptProps) {
             await navigator.clipboard.writeText(prompt);
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
-        } catch (err) {
-            console.error("Failed to copy prompt: ", err);
+        } catch {
+            // Silently fail for copy errors as they are rare and often handled by browser
         }
     };
 

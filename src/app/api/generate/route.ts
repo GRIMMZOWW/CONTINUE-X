@@ -56,9 +56,8 @@ export async function POST(req: NextRequest) {
 
         // 5. Return Result
         return NextResponse.json({ capsule, resumePrompt }, { status: 200 });
-    } catch (error) {
+    } catch {
         // Note: NEVER log chatText for privacy
-        console.error("API Route Error:", error instanceof Error ? error.message : "Internal Server Error");
         return NextResponse.json(
             { error: "Generation failed, please try again" },
             { status: 500 }

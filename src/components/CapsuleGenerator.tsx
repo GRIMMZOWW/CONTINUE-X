@@ -8,6 +8,7 @@ import ChatInput from "./ChatInput";
 import GenerateButton from "./GenerateButton";
 import CapsuleOutput from "./CapsuleOutput";
 import ResumePrompt from "./ResumePrompt";
+import ErrorCard from "./ErrorCard";
 import { Button } from "@/components/ui/button";
 
 type StyleType = "Brief" | "Detailed" | "Code-Focused";
@@ -109,9 +110,9 @@ export default function CapsuleGenerator() {
                             )}
                         </div>
                         {error && (
-                            <p className="text-red-400 text-[13px] text-center font-medium animate-in fade-in slide-in-from-top-1">
-                                {error}
-                            </p>
+                            <div className="w-full pt-4">
+                                <ErrorCard message={error} />
+                            </div>
                         )}
                     </div>
                 </section>
@@ -120,7 +121,7 @@ export default function CapsuleGenerator() {
                     <CapsuleOutput capsule={capsule} />
                     <ResumePrompt prompt={resumePrompt} />
 
-                    {(capsule || resumePrompt) && (
+                    {(capsule.trim() || resumePrompt.trim()) && (
                         <div className="pt-8">
                             <Button
                                 variant="outline"
