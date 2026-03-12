@@ -239,6 +239,17 @@ export default function HowItWorksPage() {
                                     </li>
                                 ))}
                             </ul>
+
+                            <div className="pt-4">
+                                <a
+                                    href="https://github.com/GRIMMZOWW/CONTINUE-X-android/releases/download/v1.0.0/app-release.apk"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center justify-center gap-2 border border-[#6366F1] text-[#6366F1] hover:bg-[#6366F1] hover:text-white px-6 py-3 rounded-lg text-sm font-bold transition-all"
+                                >
+                                    <span>⬇ Download Android App</span>
+                                </a>
+                            </div>
                         </div>
                         <div className="bg-[#080C14]/50 p-6 md:p-12 border-t md:border-t-0 md:border-l border-[#1E293B] grid grid-cols-1 gap-6 md:gap-8 content-center">
                             {[

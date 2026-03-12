@@ -139,6 +139,34 @@ export default function CapsuleGenerator() {
                     )}
                 </div>
 
+                {/* AVAILABLE ON ANDROID SECTION */}
+                <section className="bg-gradient-to-br from-[#0D1117] to-[#080C14] border border-[#1E293B] rounded-[24px] p-8 md:p-12 text-center space-y-6 md:space-y-8 relative overflow-hidden shadow-2xl">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#6366F1]/50 to-transparent" />
+                    
+                    <div className="space-y-3">
+                        <h2 className="text-2xl md:text-4xl font-black text-white tracking-tight">
+                            Available on Android
+                        </h2>
+                        <p className="text-[#64748B] text-base md:text-lg max-w-[500px] mx-auto leading-relaxed">
+                            Download the app and compress your AI chats on the go.
+                        </p>
+                    </div>
+
+                    <div className="flex flex-col items-center gap-4">
+                        <a
+                            href="https://github.com/GRIMMZOWW/CONTINUE-X-android/releases/download/v1.0.0/app-release.apk"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-[#6366F1] hover:bg-[#4F46E5] text-white px-8 py-4 rounded-xl text-lg font-black uppercase tracking-widest transition-all shadow-[0_0_30px_rgba(99,102,241,0.3)] w-full max-w-[300px] flex items-center justify-center gap-3"
+                        >
+                            <span>⬇ Download APK — Free</span>
+                        </a>
+                        <p className="text-[#475569] text-[12px] font-medium tracking-wide">
+                            Android 8.0 and above • 14.2 MB • v1.0.0
+                        </p>
+                    </div>
+                </section>
+
                 {/* ENHANCED FOOTER */}
                 <footer className="pt-20 pb-12 border-t border-[#1E293B]/50 space-y-12">
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">

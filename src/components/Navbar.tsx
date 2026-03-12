@@ -61,6 +61,14 @@ export default function Navbar() {
                             </Link>
                         ))}
                     </div>
+                    <a
+                        href="https://github.com/GRIMMZOWW/CONTINUE-X-android/releases/download/v1.0.0/app-release.apk"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="border border-[#6366F1] text-[#6366F1] hover:bg-[#6366F1] hover:text-white rounded-lg px-4 h-9 text-[13px] font-semibold transition-all flex items-center justify-center gap-2"
+                    >
+                        <span>⬇ Android App</span>
+                    </a>
                     <Link
                         href="/"
                         className="bg-[#6366F1] hover:bg-[#4F46E5] text-white rounded-lg px-6 h-9 text-[13px] font-semibold transition-all flex items-center justify-center"
@@ -96,10 +104,19 @@ export default function Navbar() {
                 <Link
                     href="/"
                     onClick={() => setIsOpen(false)}
-                    className="bg-[#6366F1] hover:bg-[#4F46E5] text-white py-6 text-lg font-bold rounded-xl mt-4 flex items-center justify-center"
+                    className="bg-[#6366F1] hover:bg-[#4F46E5] text-white py-6 w-full text-lg font-bold rounded-xl mt-4 flex items-center justify-center"
                 >
                     Open App
                 </Link>
+                <a
+                    href="https://github.com/GRIMMZOWW/CONTINUE-X-android/releases/download/v1.0.0/app-release.apk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsOpen(false)}
+                    className="border-2 border-[#6366F1] text-[#6366F1] hover:bg-[#6366F1] hover:text-white py-6 w-full text-lg font-bold rounded-xl flex items-center justify-center gap-3 transition-all"
+                >
+                    <span>⬇ Android App</span>
+                </a>
             </div>
         </nav>
     );
