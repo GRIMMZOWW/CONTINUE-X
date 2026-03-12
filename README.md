@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+CONTINUE-X ⚡
 
-## Getting Started
+Compress your AI chat into a smart Capsule. Resume instantly in a new conversation.
 
-First, run the development server:
+Show Image
+What is CONTINUE-X?
+When your AI chat gets too long, it slows down, loses context, and you're forced to start over and re-explain everything from scratch.
+CONTINUE-X fixes that.
+Paste your long AI conversation → get a compressed smart Capsule → paste into a new chat → AI picks up exactly where you left off.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3 Capsule Styles — Brief, Detailed, Code-focused
+Smart Resume Prompt — Auto-generates the perfect prompt to resume your chat
+Download as .txt — Save your Capsule locally
+Zero Data Storage — Your chats are never saved, logged, or stored anywhere
+No Signup Required — Open the website and use it instantly
+Works with any AI — Claude, ChatGPT, Cursor, Gemini, Copilot and more
+Custom API Key — Bring your own Groq or OpenAI key
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🛠️ Tech Stack
+LayerTechnologyFrameworkNext.js 14 (App Router)LanguageTypeScriptStylingTailwind CSS + shadcn/uiAI APIGroq (llama-3.3-70b-versatile)DeploymentVercel
 
-## Learn More
+🚀 Getting Started
+Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+Node.js 18+
+Groq API key (free at console.groq.com)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Installation
+bash# Clone the repo
+git clone https://github.com/GRIMMZOWW/CONTINUE-X.git
+cd CONTINUE-X
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Install dependencies
+npm install
 
-## Deploy on Vercel
+# Create environment file
+cp .env.example .env.local
+Environment Variables
+Create a .env.local file in the root:
+envGROQ_API_KEY=your_groq_api_key_here
+Run locally
+bashnpm run dev
+Open http://localhost:3000 in your browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+📡 API Reference
+POST /api/generate
+Generates a compressed Capsule from a chat conversation.
+Request Body:
+json{
+  "chatText": "your full chat conversation here",
+  "style": "brief" | "detailed" | "code",
+  "customApiKey": "optional",
+  "customModel": "optional",
+  "customProvider": "groq" | "openai"
+}
+Response:
+json{
+  "capsule": "compressed capsule text here"
+}
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+📁 Project Structure
+CONTINUE-X/
+├── src/
+│   ├── app/
+│   │   ├── page.tsx              # Homepage
+│   │   ├── how-it-works/         # How it works page
+│   │   ├── faq/                  # FAQ page
+│   │   ├── guidance/             # User guide
+│   │   ├── privacy/              # Privacy policy
+│   │   ├── terms/                # Terms of use
+│   │   └── api/generate/         # Capsule generation API
+│   └── components/
+│       ├── CapsuleGenerator.tsx  # Main tool component
+│       ├── Navbar.tsx            # Navigation
+│       ├── StyleSelector.tsx     # Brief/Detailed/Code picker
+│       ├── ChatInput.tsx         # Chat paste area
+│       ├── CapsuleOutput.tsx     # Generated capsule display
+│       └── ResumePrompt.tsx      # Smart resume prompt
+├── public/
+└── package.json
+
+🌐 Live Demo
+Web App: continue-x.vercel.app
+Android App: Download APK
+
+📱 Android App
+The Android version is available as a free APK download.
+👉 CONTINUE-X Android Repo
+
+🔒 Privacy
+CONTINUE-X stores zero data. Your chat text is:
+
+Sent directly to the AI API to generate the Capsule
+Never stored in any database
+Never logged anywhere
+Immediately discarded after the Capsule is generated
+
+
+👨‍💻 Built By
+Bhaumik — Vibecoder & AI Builder
+
+GitHub: @GRIMMZOWW
+Project: CONTINUE-X
+
+
+📄 License
+MIT License — free to use, fork, and build on.
+
+<p align="center">Built with ⚡ by Bhaumik — If this helped you, drop a ⭐ on the repo!</p>
